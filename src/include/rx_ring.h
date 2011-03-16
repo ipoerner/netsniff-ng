@@ -54,7 +54,7 @@ extern void start_fetching_packets(struct system_data *sd, int sock,
 static inline int mem_notify_user_for_rx(struct iovec frame)
 {
 	struct tpacket_hdr *header = frame.iov_base;
-	return (header->tp_status == TP_STATUS_USER);
+	return ((header->tp_status & TP_STATUS_USER) == TP_STATUS_USER);
 }
 
 /**
